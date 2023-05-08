@@ -9,3 +9,5 @@ license = "MIT"
 assert_cmd = "2.0.11"
 predicates = "3.0.3"
 clap = { version = "4.2.7", features = ["derive"] }
+simple-eyre = "0.3"
+rand = "0.8"
