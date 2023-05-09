@@ -250,6 +250,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "headr"
+version = "0.1.0"
+dependencies = [
+ "assert_cmd",
+ "clap",
+ "predicates",
+ "rand",
+ "simple-eyre",
+ "util",
+]
+
+[[package]]
 name = "heck"
 version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
