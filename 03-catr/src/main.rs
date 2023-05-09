@@ -1,7 +1,4 @@
-use std::{
-    fs::File,
-    io::{self, BufRead, BufReader},
-};
+use std::io::BufRead;
 
 use clap::Parser;
 use simple_eyre::eyre::Result;
@@ -31,7 +28,7 @@ fn main() -> Result<()> {
     for filename in config.files {
         let mut blank = 0;
 
-        match open(&filename) {
+        match util::open(&filename) {
             Err(err) => eprintln!("Failed to open {filename}: {err}"),
             Ok(file) => {
                 for (n, line) in file.lines().enumerate() {
@@ -54,11 +51,4 @@ fn main() -> Result<()> {
         }
     }
     Ok(())
-}
-
-fn open(filename: &str) -> Result<Box<dyn BufRead>> {
-    match filename {
-        "-" => Ok(Box::new(BufReader::new(io::stdin()))),
-        _ => Ok(Box::new(BufReader::new(File::open(filename)?))),
-    }
 }
