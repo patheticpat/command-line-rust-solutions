@@ -1,6 +1,6 @@
 [workspace]
 members = ["*/"]
-exclude = [".git", "target"]
+exclude = [".git", ".github", "target"]
 
 [workspace.package]
 license = "MIT"
