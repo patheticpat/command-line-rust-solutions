@@ -52,7 +52,7 @@ fn main() -> Result<()> {
     };
 
     for path in config.paths {
-        let entries: Vec<_> = WalkDir::new(path)
+        WalkDir::new(path)
             .into_iter()
             .filter_map(|entry| match entry {
                 Err(e) => {
@@ -63,10 +63,8 @@ fn main() -> Result<()> {
             })
             .filter(filter_by_type)
             .filter(filter_by_name)
-            .map(|entry| entry.path().display().to_string())
-            .collect();
-
-        println!("{}", entries.join("\n"));
+            .map(|entry| println!("{}", entry.path().display()))
+            .for_each(drop);
     }
 
     Ok(())
